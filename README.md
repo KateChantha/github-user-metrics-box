@@ -94,3 +94,7 @@ const UserInfo = () => {
 - [Rate Limit](https://api.github.com/rate_limit)
 
 For unauthenticated requests, the rate limit allows for up to 60 requests per hour. Unauthenticated requests are associated with the originating IP address, and not the user making requests. 
+
+### Styling Scrollbars
+[Styling scrollbars for the Safari/Chrome](https://css-tricks.com/almanac/properties/s/scrollbar/)
+[Styling Scrollbars CSS tricks](https://css-tricks.com/the-current-state-of-styling-scrollbars/)
