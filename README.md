@@ -1,6 +1,7 @@
 ## About MetricsBox
 
-Github User Metrics Visualization.
+Github User Metrics Visualization built using React, Context API
+
 
 ## App Features
 
@@ -43,4 +44,43 @@ const StyledWrapper = styled.htmlElement`
   write your styles here
 `
 export default ReactComponent
+```
+
+### Context API
+##### in context.js
+1. use react createContext() hooks to have an access to Provider & Consumer.
+2. Instead of using GithubContext.Provider to wrap all the children directly, we create a HOC to customize the logic and that HOC returns GithubContext.Provider.
+```jsx
+const GithubContext = React.createContext();
+
+const GithubProvider = ({ children }) => {
+  /* logic here */
+  return (
+    <GithubContext.Provider value={ ... }>
+      {children}
+    </GithubContext.Provider>
+  )
+}
+
+export { GithubProvider, GithubContext };
+```
+- in index.js is wrapped by GithubProvider
+```jsx
+ReactDOM.render(
+  <React.StrictMode>
+    <GithubProvider>
+      <App />
+    </GithubProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+- in chlidren component - Info.js. get data/ value from GithubContext
+```jsx
+import { GithubContext } from '../context/context';
+
+const UserInfo = () => {
+  const data = React.useContext(GithubContext);
+  return <h2>user info component: {data}</h2>;
+};
 ```
