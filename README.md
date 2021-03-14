@@ -13,8 +13,8 @@ Github User Metrics Visualization.
 
 ## App Documentation
 ### React Router Dom
-version used - "react-router-dom": "^5.2.0",
 [react-router-dom - Main Docs](https://reactrouter.com/web/guides/quick-start)
+- version used - "react-router-dom": "^5.2.0"
 
 ```
 - <Route path='/somepathname' exact={true}> exact also be useful when having a nested route
@@ -24,21 +24,23 @@ version used - "react-router-dom": "^5.2.0",
 
 ### Styled Components
 [Styled-Components - Main Docs](https://styled-components.com/)
-Example of setting up react component with styled-components.
+- Example of setting up react component with styled-components.
 
 ```jsx
 import styled from "styled-components";
 
 const ReactComponent = () => {
  // logic here
- return <StyledWrapper>
- {some content}
- </StyledWrapper>
-}
+  return (
+    <StyledWrapper>
+      {some content}
+    </StyledWrapper>
+ );
+};
 
 
 const StyledWrapper = styled.htmlElement`
-write your styles here
+  write your styles here
 `
 export default ReactComponent
 ```
