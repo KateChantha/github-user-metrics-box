@@ -3,46 +3,63 @@ import styled from 'styled-components';
 import { GithubContext } from '../context/context';
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
 
-// const chartData = [
-//   {
-//     label: "JavaScript",
-//     value: "290" 
-//   },
-//   {
-//     label: "HTML",
-//     value: "260"
-//   },
-//   {
-//     label: "CSS",
-//     value: "180"
-//   },
-// ];
+const chartData = [
+  {
+    label: "JavaScript",
+    value: "290" 
+  },
+  {
+    label: "HTML",
+    value: "260"
+  },
+  {
+    label: "CSS",
+    value: "180"
+  },
+];
 const Repos = () => {
   const {repos} = React.useContext(GithubContext);
   
-  let languages = repos.reduce((totalObj, item)=> {
-    const { language } = item;
+  const languages = repos.reduce((totalObj, item)=> {
+    const { language, stargazers_count } = item;
     // handle null
     if (!language) return totalObj;
     // count language
     // set up key dynamicly
-    !totalObj[language] 
-    ? totalObj[language] = {label: language, value: 1}
-    : totalObj[language].value ++;
+    !totalObj[language]
+    ? totalObj[language] = {
+      label: language, 
+      value: 1,
+      stars: stargazers_count
+    }
+    : totalObj[language] = {
+      ...totalObj[language],
+      value: totalObj[language].value + 1,
+      stars: totalObj[language].stars + stargazers_count
+    }
+    // console.log(totalObj)
     return totalObj
   }, {})
 
-  // sort to top 5 languages
-  languages = Object.values(languages)
+  // top 5 most used languages
+  const mostUsed = Object.values(languages)
     .sort((a,b) => b.value - a.value)
     .slice(0,5)
-  // console.log(languages)
+  
+  // top 5 most stars per langauge
+  // config object shape to be {label: , value: }
+  const mostStarLangauge = Object.values(languages)
+    .sort((a,b) => b.statrs - a.statrs)
+    .slice(0,5)
+    .map(item => ({ ...item, value: item.stars }))
 
   return (
     <section className='section'>
       <Wrapper className='section-center'>
-        <Pie3D data={languages} />
-        
+        <Pie3D data={mostUsed} />
+        <div></div>
+        <Doughnut2D data={mostStarLangauge}/>
+        <div></div>
       </Wrapper>
     </section>
   )
