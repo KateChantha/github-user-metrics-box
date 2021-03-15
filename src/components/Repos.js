@@ -20,6 +20,7 @@ const chartData = [
 const Repos = () => {
   const {repos} = React.useContext(GithubContext);
   
+  /*** mostUsedLanguage and mostStarLangauge ***/
   const languages = repos.reduce((totalObj, item)=> {
     const { language, stargazers_count } = item;
     // handle null
@@ -42,24 +43,44 @@ const Repos = () => {
   }, {})
 
   // top 5 most used languages
-  const mostUsed = Object.values(languages)
+  const mostUsedLanguage = Object.values(languages)
     .sort((a,b) => b.value - a.value)
-    .slice(0,5)
+    .slice(0,5);
   
   // top 5 most stars per langauge
   // config object shape to be {label: , value: }
-  const mostStarLangauge = Object.values(languages)
+  const mostStarLanguage = Object.values(languages)
     .sort((a,b) => b.statrs - a.statrs)
     .slice(0,5)
-    .map(item => ({ ...item, value: item.stars }))
+    .map(item => ({ ...item, value: item.stars }));
+
+  /*** End of mostUsedLanguage and mostStarLangauge ***/
+  /*** mostStarsRepo and forks ***/
+  let {stars, forks} = repos.reduce((totalObj, item)=>{
+    const { stargazers_count, name, forks } = item;
+    // shape of data
+    // <number>star-count: {lable: <string>repo-name, value: <number>star-count}
+    totalObj.stars[stargazers_count] = { label: name, value: stargazers_count }
+
+    return totalObj;
+  },{
+    stars:{}, forks:{}
+  })
+
+  // console.log(stars) 
+  // display key of <number>star-count in ascending order
+  // top 5 repo stared
+  const mostStarsRepo = Object.values(stars).slice(-5).reverse();
+  /*** End of mostStarsRepo and forks ***/
+
 
   return (
     <section className='section'>
       <Wrapper className='section-center'>
-        <Pie3D data={mostUsed} />
-        <div></div>
-        <Doughnut2D data={mostStarLangauge}/>
-        <div></div>
+        <Pie3D data={mostUsedLanguage} />
+        <Column3D data={mostStarsRepo} />
+        <Doughnut2D data={mostStarLanguage}/>
+        <Bar3D data={chartData} />
       </Wrapper>
     </section>
   )

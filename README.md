@@ -1,6 +1,6 @@
 ## About MetricsBox
 
-Github User Metrics Visualization built using React, Context API
+Github User Metrics Visualization built with React, Context API
 
 
 ## App Features
@@ -107,3 +107,11 @@ For unauthenticated requests, the rate limit allows for up to 60 requests per ho
 - [Themes](https://www.fusioncharts.com/dev/themes/introduction-to-themes)
 
 - Render the chart (see ExampleChart.js)
+- NOTE: in Repos.js 
+- organize object data shape to be {label: , value: } because that's what the charts looking for.
+```
+{
+  label: <string>,
+  value: <number>
+}
+```
