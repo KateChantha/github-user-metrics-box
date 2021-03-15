@@ -4,7 +4,7 @@ import FusionCharts from "fusioncharts";
 // chart type - same type in chartConfigs
 import Column2D from "fusioncharts/fusioncharts.charts";
 // theme 
-import FusionTheme from "fusioncharts/themes/fusioncharts.theme.candy";
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.ocean";
 
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
@@ -19,7 +19,7 @@ const chartConfigs = {
     // Chart Configuration
     chart: {
       caption: "Most Popular",
-      theme: "candy",
+      theme: "ocean",
       yAxisName: "Stars",
       xAxisName: "Repos",
       yAxisNameFontSize: "16px",

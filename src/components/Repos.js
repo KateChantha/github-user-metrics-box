@@ -58,9 +58,10 @@ const Repos = () => {
   /*** mostStarsRepo and forks ***/
   let {stars, forks} = repos.reduce((totalObj, item)=>{
     const { stargazers_count, name, forks } = item;
-    // shape of data
+    // shape of stars property
     // <number>star-count: {lable: <string>repo-name, value: <number>star-count}
     totalObj.stars[stargazers_count] = { label: name, value: stargazers_count }
+    totalObj.forks[forks] = { label: name, value: forks}
 
     return totalObj;
   },{
@@ -69,8 +70,9 @@ const Repos = () => {
 
   // console.log(stars) 
   // display key of <number>star-count in ascending order
-  // top 5 repo stared
-  const mostStarsRepo = Object.values(stars).slice(-5).reverse();
+  // top 5 repo stared & forked
+  const mostStaredRepo = Object.values(stars).slice(-5).reverse();
+  const mostForkedRepo = Object.values(forks).slice(-5).reverse();
   /*** End of mostStarsRepo and forks ***/
 
 
@@ -78,9 +80,9 @@ const Repos = () => {
     <section className='section'>
       <Wrapper className='section-center'>
         <Pie3D data={mostUsedLanguage} />
-        <Column3D data={mostStarsRepo} />
+        <Column3D data={mostStaredRepo} />
         <Doughnut2D data={mostStarLanguage}/>
-        <Bar3D data={chartData} />
+        <Bar3D data={mostForkedRepo} />
       </Wrapper>
     </section>
   )
