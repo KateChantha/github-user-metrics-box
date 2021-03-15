@@ -3,31 +3,45 @@ import styled from 'styled-components';
 import { GithubContext } from '../context/context';
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
 
-const chartData = [
-  {
-    label: "JavaScript",
-    value: "290" 
-  },
-  {
-    label: "HTML",
-    value: "260"
-  },
-  {
-    label: "CSS",
-    value: "180"
-  },
-  {
-    label: "React",
-    value: "140"
-  },
-];
+// const chartData = [
+//   {
+//     label: "JavaScript",
+//     value: "290" 
+//   },
+//   {
+//     label: "HTML",
+//     value: "260"
+//   },
+//   {
+//     label: "CSS",
+//     value: "180"
+//   },
+// ];
 const Repos = () => {
   const {repos} = React.useContext(GithubContext);
-  console.log(repos)
+  
+  let languages = repos.reduce((totalObj, item)=> {
+    const { language } = item;
+    // handle null
+    if (!language) return totalObj;
+    // count language
+    // set up key dynamicly
+    !totalObj[language] 
+    ? totalObj[language] = {label: language, value: 1}
+    : totalObj[language].value ++;
+    return totalObj
+  }, {})
+
+  // sort to top 5 languages
+  languages = Object.values(languages)
+    .sort((a,b) => b.value - a.value)
+    .slice(0,5)
+  // console.log(languages)
+
   return (
     <section className='section'>
       <Wrapper className='section-center'>
-        <Pie3D data={chartData} />
+        <Pie3D data={languages} />
         
       </Wrapper>
     </section>

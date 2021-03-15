@@ -12,7 +12,7 @@ const Pie3D = ({ data }) => {
   // STEP 3 
 const chartConfigs = {
   type: "pie3d", // chart type(JavaScript alias)
-  width: "400", // Width of the chart
+  width: "100%", // Width of the chart, responsive
   height: "400", // Height of the chart
   dataFormat: "json", // Data type
   dataSource: {
@@ -21,7 +21,8 @@ const chartConfigs = {
       caption: "Languages",
       theme: "fusion",
       decimals:0,
-      pieRadius: '35%'
+      pieRadius: '35%',
+
     },
     // Chart Data
     data
