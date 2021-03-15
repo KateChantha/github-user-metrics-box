@@ -8,8 +8,8 @@ Github User Metrics Visualization built using React, Context API
 ## App Dependencies
 - [react-router-dom - Main Docs](https://reactrouter.com/web/guides/quick-start)
 - [Styled-Components - Main Docs](https://styled-components.com/)
-- fusioncharts
-- react-fusioncharts
+- [Fusion Charts - Main Docs](https://www.fusioncharts.com/)
+- [react-fusioncharts](https://www.fusioncharts.com/dev/getting-started/react/your-first-chart-using-react)
 - Auth0
 
 ## App Documentation
@@ -96,5 +96,14 @@ const UserInfo = () => {
 For unauthenticated requests, the rate limit allows for up to 60 requests per hour. Unauthenticated requests are associated with the originating IP address, and not the user making requests. 
 
 ### Styling Scrollbars
-[Styling scrollbars for the Safari/Chrome](https://css-tricks.com/almanac/properties/s/scrollbar/)
-[Styling Scrollbars CSS tricks](https://css-tricks.com/the-current-state-of-styling-scrollbars/)
+- [Styling scrollbars for the Safari/Chrome](https://css-tricks.com/almanac/properties/s/scrollbar/)
+- [Styling Scrollbars CSS tricks](https://css-tricks.com/the-current-state-of-styling-scrollbars/)
+
+### Fusion Charts
+
+- [Fusion Charts - Main Docs](https://www.fusioncharts.com/)
+- [First React Chart](https://www.fusioncharts.com/dev/getting-started/react/your-first-chart-using-react)
+- [List Of Charts](https://www.fusioncharts.com/dev/chart-guide/list-of-charts)
+- [Themes](https://www.fusioncharts.com/dev/themes/introduction-to-themes)
+
+- Render the chart (see ExampleChart.js)
