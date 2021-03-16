@@ -5,27 +5,17 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { GithubProvider } from './context/context';
 import { Auth0Provider } from '@auth0/auth0-react';
-// domain={process.env.REACT_APP_DOMAIN}
-// clientId={process.env.REACT_APP_CLIENT_ID}
-// domain=""
-// clientId=""
-// domain={`${process.env.REACT_APP_DOMAIN}`}
-// clientId={`${process.env.REACT_APP_CLIENT_ID}`}
-// const REACT_APP_DOMAIN = process.env.REACT_APP_DOMAIN
-// const REACT_APP_CLIENT_ID = process.env.REACT_APP_CLIENT_ID
+import Auth0ProviderWithHistory from './pages/Auth0ProviderWithHistory';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Auth0Provider
-      domain=""
-      clientId=""
-      redirectUri={window.location.origin}
-      cacheLocation="localstorage"
+    <Auth0ProviderWithHistory
     >
       <GithubProvider>
         <App />
       </GithubProvider>
-    </Auth0Provider>
+    </Auth0ProviderWithHistory>
   </React.StrictMode>,
   document.getElementById('root')
 );
