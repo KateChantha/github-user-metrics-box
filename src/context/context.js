@@ -24,6 +24,7 @@ const GithubProvider = ({ children }) => {
   const toggleError = (show = false, msg = '') => {
     setError({ show, msg })
   }
+
   const searchGithubUser = async (user) => {
     // clean up existing error msg with predefined default value
     toggleError();
@@ -35,20 +36,27 @@ const GithubProvider = ({ children }) => {
     if (response) { 
       setGithubUser(response.data)
       const {login, followers_url} = response.data;
-      // repos & followers
-      axios(`${rootUrl}/users/${login}/repos?per_page=100`)
-        .then(response => setRepos(response.data))
-      axios(`${followers_url}?per_page=100`)
-        .then(response => setFollowers(response.data))
+
+      await Promise.allSettled([
+        axios(`${rootUrl}/users/${login}/repos?per_page=100`), 
+        axios(`${followers_url}?per_page=100`)
+      ]).then(results => {
+        const [repoPromise, followesPromise] = results;
+        const status = 'fulfilled';
+        if (repoPromise.status === status) 
+          setRepos(repoPromise.value.data)
+        if (followesPromise.status === status) 
+          setFollowers(followesPromise.value.data)
+      })
     } else { 
       toggleError(true, "there is no user with that user name!")
     }
     
-    // console.log(githubUser)
     checkRequests();
     setIsLoading(false);
   }
-  // check rate
+
+  // check remaining request 
   const checkRequests = () => {
     axios(`${rootUrl}/rate_limit`)
       .then(({ data }) => {
@@ -57,13 +65,12 @@ const GithubProvider = ({ children }) => {
 
         if (remaining === 0) {
           toggleError(true, "sorry, you've exceeded your hourly rate limit!")
-          // hind button
         }
       })
       .catch(err => console.log(err))
   }
 
-  
+  // get the remaining request once, after page loaded
   useEffect(checkRequests,[]);
 
   return (
