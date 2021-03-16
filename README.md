@@ -131,7 +131,7 @@ For unauthenticated requests, the rate limit allows for up to 60 requests per ho
   - Allowed Callback URLs
   - Allowed Logout URLs
   - Allowed Web Origins
-  - SAVE CHANGES!!!!!!!!!!!!!!!
+  - SAVE CHANGES!!!
 
 - Connections
   email,social
