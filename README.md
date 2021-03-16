@@ -1,6 +1,6 @@
 ## About MetricsBox
 
-Github User Metrics Visualization built with React, Context API
+Github User Metrics Visualization built with React, Context API.
 
 
 ## App Features
@@ -114,6 +114,52 @@ For unauthenticated requests, the rate limit allows for up to 60 requests per ho
   label: <string>,
   value: <number>
 }
+```
+
+### Auth0
+
+- [Auth0 - Main Docs](https://auth0.com/)
+
+- Create Application
+- Choose : Single Page Web Applications
+- Choose : React
+- Go to Settings Tab
+- Copy/Paste Domain, ClientID - can be public (or use .env)
+- Add Domain -
+  for now http://localhost:3000 (DON'T COPY PASTE FROM URL BAR)
+
+  - Allowed Callback URLs
+  - Allowed Logout URLs
+  - Allowed Web Origins
+  - SAVE CHANGES!!!!!!!!!!!!!!!
+
+- Connections
+  email,social
+
+- [React SDK Docs](https://auth0.com/docs/libraries/auth0-react)
+- [REACT SDK API Docs](https://auth0.github.io/auth0-react/)
+#### cacheLocation in index.js
+- [REACT cacheLocation](https://auth0.github.io/auth0-react/interfaces/auth0_provider.auth0provideroptions.html#cachelocation) The location to use when storing cache data. Valid values are memory or localstorage. The default setting is memory. This to solve an issue, so that we can still keep user login while navigating from 404 page not found back to home/ dashboard page.
+
+#### Page loaded -> Login -> Logout : state that is happening
+- in Navbar.js, when page is loaded 
+```
+isAuthenticated -> false 
+user -> undefined
+isLoading -> true
+```
+- when user click on 'Log in' button
+```
+isAuthenticated -> true
+user -> {...}
+isLoading -> false
+```
+
+- when user click on 'Log out' button
+```
+isAuthenticated -> false
+user -> false
+isLoading -> false
 ```
 
 ### context.js

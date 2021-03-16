@@ -4,7 +4,7 @@ import FusionCharts from "fusioncharts";
 // chart type - same type in chartConfigs
 import Column2D from "fusioncharts/fusioncharts.charts";
 // theme 
-import FusionTheme from "fusioncharts/themes/fusioncharts.theme.candy";
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
@@ -19,7 +19,7 @@ const chartConfigs = {
     // Chart Configuration
     chart: {
       caption: "Stars Per Languages",
-      theme: 'candy',
+      theme: 'fusion',
       decimals:0,
       doughnutRadius: '45%',
       showPercentValues: 0,
