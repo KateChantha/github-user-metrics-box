@@ -61,6 +61,7 @@ const Wrapper = styled.div`
     column-gap: 0.5rem;
     border-radius: 5px;
     padding: 0.5rem;
+    border: solid 1px var(--clr-red-light);
     input {
       border-color: transparent;
       outline-color: var(--clr-grey-10);

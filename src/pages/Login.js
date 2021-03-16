@@ -9,7 +9,8 @@ const Login = () => {
     <Wrapper>
       <div className="container">
         <img src={loginImg} alt='log in' />
-        <h1>github user</h1>
+        <h1>MetricsBox</h1>
+        <h3>github user data visualization</h3>
         <button 
           className='btn'
           onClick={loginWithRedirect}
@@ -34,6 +35,9 @@ const Wrapper = styled.section`
     margin-bottom: 2rem;
   }
   h1 {
+    color: var(--clr-red-light);
+  }
+  h3 {
     margin-bottom: 1.5rem;
   }
 `;
