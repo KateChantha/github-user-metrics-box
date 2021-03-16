@@ -115,3 +115,6 @@ For unauthenticated requests, the rate limit allows for up to 60 requests per ho
   value: <number>
 }
 ```
+### Search.js
+- have it's own local state to collect data from input search.
+- from the global state will get the function that call

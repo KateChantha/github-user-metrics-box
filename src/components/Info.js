@@ -51,7 +51,7 @@ const UserInfo = () => {
 };
 
 const Item = ({icon, label, value, color}) => {
-  console.log(value)
+  
   return (
     <article className='item'>
       <span className={color}>{icon}</span>
