@@ -18,6 +18,7 @@ Variables
   --clr-primary-3: hsl(185, 81%, 29%);
   --clr-primary-4: hsl(185, 77%, 34%);
   /* primary/main color */
+  /* --clr-primary-5: hsl(185, 62%, 45%); */
   --clr-primary-5: hsl(185, 62%, 45%);
   /* lighter shades of primary color */
   --clr-primary-6: hsl(185, 57%, 50%);
@@ -68,7 +69,7 @@ Global Styles
 }
 body {
   font-family: var(--ff-secondary);
-  background: var(--clr-grey-10);
+  background: var(--clr-grey-2);
   color: var(--clr-grey-1);
   line-height: 1.5;
   font-size: 0.875rem;

@@ -73,7 +73,7 @@ const Wrapper = styled.section`
   .item {
     border-radius: var(--radius);
     padding: 1rem 2rem;
-    background: var(--clr-white);
+    background: var(--clr-grey-7);
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 3rem;
@@ -95,6 +95,7 @@ const Wrapper = styled.section`
     p {
       margin-bottom: 0;
       text-transform: capitalize;
+      color: var(--clr-red-light);
     }
     .pink {
       background: #ffe0f0;

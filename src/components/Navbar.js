@@ -34,7 +34,8 @@ const Navbar = () => {
 const Wrapper = styled.nav`
   padding: 1.5rem;
   margin-bottom: 4rem;
-  background: var(--clr-white);
+  /* background: var(--clr-white); */
+  background: var(--clr-primary-9);
   display: flex;
   justify-content: space-between;
   align-items: center;

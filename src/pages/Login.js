@@ -42,6 +42,7 @@ const Wrapper = styled.section`
   }
   h3 {
     margin-bottom: 1.5rem;
+    color: var(--clr-grey-7);
   }
   svg {
       font-size: 15rem;
