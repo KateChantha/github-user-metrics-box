@@ -2,13 +2,16 @@ import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import styled from 'styled-components';
 import loginImg from '../images/login-img.svg';
+import { FcComboChart } from 'react-icons/fc';
+
 const Login = () => {
   const { loginWithRedirect} = useAuth0();
 
   return (
     <Wrapper>
       <div className="container">
-        <img src={loginImg} alt='log in' />
+        {/* <img src={loginImg} alt='log in' /> */}
+        <FcComboChart/>
         <h1>MetricsBox</h1>
         <h3>github user data visualization</h3>
         <button 
@@ -39,6 +42,12 @@ const Wrapper = styled.section`
   }
   h3 {
     margin-bottom: 1.5rem;
+  }
+  svg {
+      font-size: 15rem;
+  }
+  button {
+    background-color: var(--clr-red-light);
   }
 `;
 export default Login;
