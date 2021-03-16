@@ -16,8 +16,8 @@ const Auth0ProviderWithHistory = ({ children }) => {
 
   return (
     <Auth0Provider
-      domain={domain}
-      clientId={clientId}
+      domain="dev-vntum9u9.us.auth0.com"
+      clientId="q4SxIEnrPnH1KUda8Yiwj4q3yPvRgzpE"
       redirectUri={window.location.origin}
       cacheLocation="localstorage"
     >

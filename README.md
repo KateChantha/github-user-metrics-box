@@ -4,6 +4,7 @@ Github User Metrics Visualization built with React, Context API.
 
 
 ## App Features
+1. Search git hub user and get user static showing in charts.
 
 ## App Dependencies
 - [react-router-dom - Main Docs](https://reactrouter.com/web/guides/quick-start)
