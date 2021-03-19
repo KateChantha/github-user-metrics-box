@@ -28,7 +28,7 @@ const Search = () => {
             <MdSearch/>
             <input 
               type="text" 
-              placeholder="enter github user"
+              placeholder="enter github user..."
               value={user}
               onChange={(e) => setUser(e.target.value)}
             />
@@ -54,7 +54,6 @@ const Wrapper = styled.div`
     }
   }
   .form-control {
-    /* background: var(--clr-white); */
     background: var(--clr-primary-9);
     display: grid;
     align-items: center;
@@ -110,7 +109,6 @@ const Wrapper = styled.div`
   }
   h3 {
     margin-bottom: 0;
-    /* color: var(--clr-grey-5); */
     color: var(--clr-grey-10);
     font-weight: 400;
   }
@@ -123,8 +121,9 @@ const ErrorWrapper = styled.article`
   transform: translateY(-100%);
   text-transform: capitalize;
   p {
-    color: red;
+    color: var(--clr-red-light);
     font-weight: bold;
+    font-size: 1.5rem;
     letter-spacing: var(--spacing);
   }
 `;
