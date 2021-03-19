@@ -2,6 +2,8 @@ import React from 'react';
 import { Info, Repos, User, Search, Navbar } from '../components';
 import loadingImage from '../images/preloader.gif';
 import { GithubContext } from '../context/context';
+import UserList from '../components/users/UserList';
+
 const Dashboard = () => {
   const { isLoading } = React.useContext(GithubContext);
   return (
@@ -14,6 +16,7 @@ const Dashboard = () => {
             <Info />
             <User />
             <Repos />
+            <UserList />
          </React.Fragment>
       }
     </main>

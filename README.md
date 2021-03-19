@@ -89,6 +89,7 @@ const UserInfo = () => {
 ### Gihthub API
 
 - Root Endpoint - https://api.github.com
+- Get Useres - https://api.github.com/users
 - Get User - https://api.github.com/users/${ ... }
 - Repos - https://api.github.com/users/${ ... }/repos?per_page=100
 - Followers - https://api.github.com/users/${ ... }/followers
