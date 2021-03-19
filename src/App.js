@@ -10,6 +10,9 @@ function App() {
           <PrivateRoute path='/' exact={true}>
             <Dashboard></Dashboard>
           </PrivateRoute>
+          <PrivateRoute path='/users/:userslug' exact={true}>
+            <Dashboard></Dashboard>
+          </PrivateRoute>
           <Route path='/login'>
             <Login></Login>
           </Route>
