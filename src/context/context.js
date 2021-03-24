@@ -27,7 +27,7 @@ const GithubProvider = ({ children }) => {
     setError({ show, msg })
   }
 
-  // Get all users +++
+  // Get all users 
   const getAllGithubUsers = async () => {
     // setIsLoading(true);
     const res = await axios.get(`${rootUrl}/users`);
@@ -38,7 +38,7 @@ const GithubProvider = ({ children }) => {
     return res.data
   }
 
-  // Get some user from search box +++
+  // Get some user from search box 
   const searchSomeGithubUser = async (user) => {
     toggleError();
     const res = await axios.get(`${rootUrl}/search/users?q=${user}`)

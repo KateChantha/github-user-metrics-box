@@ -6,16 +6,7 @@ const Search = () => {
   const { requestCount, error, searchSomeGithubUser, isLoading } = React.useContext(GithubContext);
   const [user, setUser] = useState('');
   
-  // get things from global context
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (user) {
-  //     searchGithubUser(user);
-  //     // optional setUser('') after submit
-  //   }
-  // }
-
-  // get some users ++++
+  // get some users 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user) {
