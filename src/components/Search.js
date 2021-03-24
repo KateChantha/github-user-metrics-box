@@ -44,8 +44,10 @@ const Search = () => {
               />
             </div>
             <div className="button-wrapper">
-              <MdClear/>
-              {(requestCount > 0 && !isLoading) && <button type="submit">search</button> }
+              <button className="clear-btn" onClick={() => setUser('')}>
+                <MdClear />
+              </button>
+              {(requestCount > 0 && !isLoading) && <button className="search-btn" type="submit">search</button> }
             </div>
           </div>
         </form>
@@ -68,10 +70,6 @@ const Wrapper = styled.div`
   }
   .form-control {
     background: var(--clr-primary-9);
-    /* display: grid;
-    column-gap: 0.5rem;
-    align-items: center;
-    grid-template-columns: auto 1fr auto; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -82,7 +80,6 @@ const Wrapper = styled.div`
       border-color: transparent;
       outline-color: var(--clr-grey-10);
       letter-spacing: var(--spacing);
-      /* color: var(--clr-grey-3); */
       background: var(--clr-primary-9);
       padding: 0.25rem 0.5rem;
       width: 100%
@@ -92,7 +89,7 @@ const Wrapper = styled.div`
       text-transform: capitalize;
       letter-spacing: var(--spacing);
     }
-    button {
+    .search-btn {
       border-radius: 5px;
       border-color: transparent;
       padding: 0.25rem 0.5rem;
@@ -107,6 +104,11 @@ const Wrapper = styled.div`
         color: var(--clr-primary-1);
       }
     }
+    .clear-btn {
+      cursor: pointer;
+      border-color: transparent;
+      background: none;
+    }
     .input-wrapper {
       width: 100%;
       display: flex;
@@ -116,7 +118,6 @@ const Wrapper = styled.div`
       display: flex;
       align-items: center;
     }
-
     svg {
       color: var(--clr-grey-5);
       margin: 0 4px;
