@@ -171,5 +171,7 @@ isLoading -> false
 - have it's own local state to collect data from input search.
 - from the global state will get the function that call
 
-
+## Future Improvement
+- [] In Search.js, add clear icon in search box to clear text
+- [] In Search.js, add clear button to clear out a list of user results from search. 
 
