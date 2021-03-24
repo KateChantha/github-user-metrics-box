@@ -11,7 +11,8 @@ const GithubContext = React.createContext();
 
 // create GithubProvider to customize the logic and return GithubContext.Provider
 const GithubProvider = ({ children }) => {
-  const [allGithubUsrs, setAllGithubUsers] = useState([])
+  const [allGithubUsrs, setAllGithubUsers] = useState([]);
+  const [someGithubUsers, setSomeGithubUsers] = useState([]);
   const [githubUser, setGithubUser] = useState(mockUser);
   const [repos, setRepos] = useState(mockRepos);
   const [followers, setFollowers] = useState(mockFollowers);
@@ -36,11 +37,12 @@ const GithubProvider = ({ children }) => {
     return res.data
   }
 
-  // Get some user from search box
+  // Get some user from search box +++
   const searchSomeGithubUser = async (user) => {
     const res = await axios.get(`${rootUrl}/search/users?q=${user}`)
 
-    console.log(res.data.items)
+    // console.log(res.data.items)
+    setSomeGithubUsers(res.data.items);
   }
 
   const searchGithubUser = async (user) => {
@@ -93,7 +95,7 @@ const GithubProvider = ({ children }) => {
   useEffect(checkRequests,[]);
 
   return (
-    <GithubContext.Provider value={{ githubUser, repos, followers, requestCount, error, searchGithubUser, setIsLoading, isLoading, getAllGithubUsers, allGithubUsrs, searchSomeGithubUser }}>
+    <GithubContext.Provider value={{ githubUser, repos, followers, requestCount, error, searchGithubUser, setIsLoading, isLoading, getAllGithubUsers, allGithubUsrs, searchSomeGithubUser, someGithubUsers }}>
       {children}
     </GithubContext.Provider>
   )
