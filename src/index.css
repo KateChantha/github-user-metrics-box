@@ -162,8 +162,12 @@ p {
   position: relative;
 }
 .section-title {
-  padding: 2rem;
+  padding: 0 2rem 2rem;
   color: var(--clr-primary-5);
+}
+.section-title a {
+  color: var(--clr-primary-3);
+  text-decoration: underline;
 }
 .section-center {
   width: 90vw;

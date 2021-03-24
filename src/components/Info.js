@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { GithubContext } from '../context/context';
 import styled from 'styled-components';
 import { GoRepo, GoGist } from 'react-icons/go';
@@ -42,6 +43,9 @@ const UserInfo = () => {
   return (
     <section className='section'>
       <div className='section-title'>
+        <Link to='/'>
+          <h4>{`< back to search`}</h4>
+        </Link>
         <h3>Welcome to</h3>
         <h2>{name}'s Metrics box</h2>
       </div>
