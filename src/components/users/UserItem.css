@@ -1,0 +1,30 @@
+.user-item--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--clr-primary-4);
+  padding: 1rem;
+  box-shadow: 8px 8px 8px var(--clr-grey-1);
+  /* box-shadow: var(--dark-shadow); */
+}
+
+.user-item--container img {
+  border-radius: 50%;
+}
+.user-item--container button {
+  border-radius: 5px;
+  border-color: transparent;
+  padding: 3px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--clr-grey-8);
+}
+.user-item--container a {
+  color: var(--clr-primary-1);
+}
+
+.user-item--container h4 {
+  margin: 0;
+}
