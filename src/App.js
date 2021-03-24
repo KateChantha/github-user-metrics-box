@@ -8,16 +8,16 @@ function App() {
       <Router>
         <Switch>
           <PrivateRoute path='/' exact={true}>
-            <Dashboard></Dashboard>
+            <Dashboard/>
           </PrivateRoute>
           <PrivateRoute path='/users/:userslug' exact={true}>
             <UserBoard />
           </PrivateRoute>
           <Route path='/login'>
-            <Login></Login>
+            <Login />
           </Route>
           <Route path='*'>
-            <Error></Error>
+            <Error />
           </Route>
         </Switch>
       </Router>

@@ -17,9 +17,6 @@ const Auth0ProviderWithHistory = ({ children }) => {
   }
 
 
-  // const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-  // const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
-
   // const history = useHistory();
   // const onRedirectCallback = (appState) => {
   //   history.push(appState?.returnTo || window.location.pathname);
@@ -27,8 +24,8 @@ const Auth0ProviderWithHistory = ({ children }) => {
 
   return (
     <Auth0Provider
-      domain={domain}
-      clientId={clientId}
+      domain="dev-vntum9u9.us.auth0.com"
+      clientId="q4SxIEnrPnH1KUda8Yiwj4q3yPvRgzpE"
       redirectUri={window.location.origin}
       cacheLocation="localstorage"
     >
