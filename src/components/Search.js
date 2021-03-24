@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { MdSearch , MdClear } from 'react-icons/md';
 import { GithubContext } from '../context/context';
 const Search = () => {
-  const { requestCount, error, searchGithubUser,searchSomeGithubUser, isLoading } = React.useContext(GithubContext);
+  const { requestCount, error, searchSomeGithubUser, isLoading } = React.useContext(GithubContext);
   const [user, setUser] = useState('');
   
   // get things from global context
