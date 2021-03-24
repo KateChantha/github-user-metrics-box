@@ -44,9 +44,9 @@ const Search = () => {
               />
             </div>
             <div className="button-wrapper">
-              <button className="clear-btn" onClick={() => setUser('')}>
+              {/* <button className="clear-btn" onClick={() => setUser('')}>
                 <MdClear />
-              </button>
+              </button> */}
               {(requestCount > 0 && !isLoading) && <button className="search-btn" type="submit">search</button> }
             </div>
           </div>
