@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import { MdSearch } from 'react-icons/md';
+import { MdSearch , MdClear } from 'react-icons/md';
 import { GithubContext } from '../context/context';
 const Search = () => {
   const { requestCount, error, searchGithubUser,searchSomeGithubUser, isLoading } = React.useContext(GithubContext);
@@ -34,15 +34,19 @@ const Search = () => {
         )}
         <form onSubmit={handleSubmit}>
           <div className="form-control">
-            <MdSearch/>
-            <input 
-              type="text" 
-              placeholder="enter github user..."
-              value={user}
-              onChange={(e) => setUser(e.target.value)}
-            />
-            {(requestCount > 0 && !isLoading) && <button type="submit">search</button> }
-            
+            <div className="input-wrapper">
+                <MdSearch/>
+              <input 
+                type="text" 
+                placeholder="enter github user..."
+                value={user}
+                onChange={(e) => setUser(e.target.value)}
+              />
+            </div>
+            <div className="button-wrapper">
+              <MdClear/>
+              {(requestCount > 0 && !isLoading) && <button type="submit">search</button> }
+            </div>
           </div>
         </form>
         <h3>requests : {requestCount} / 60</h3>
@@ -64,10 +68,13 @@ const Wrapper = styled.div`
   }
   .form-control {
     background: var(--clr-primary-9);
-    display: grid;
-    align-items: center;
-    grid-template-columns: auto 1fr auto;
+    /* display: grid;
     column-gap: 0.5rem;
+    align-items: center;
+    grid-template-columns: auto 1fr auto; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-radius: 5px;
     padding: 0.5rem;
     border: solid 3px var(--clr-red-light);
@@ -78,6 +85,7 @@ const Wrapper = styled.div`
       /* color: var(--clr-grey-3); */
       background: var(--clr-primary-9);
       padding: 0.25rem 0.5rem;
+      width: 100%
     }
     input::placeholder {
       color: var(--clr-grey-3);
@@ -99,9 +107,19 @@ const Wrapper = styled.div`
         color: var(--clr-primary-1);
       }
     }
+    .input-wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .button-wrapper {
+      display: flex;
+      align-items: center;
+    }
 
     svg {
       color: var(--clr-grey-5);
+      margin: 0 4px;
     }
     input,
     button,
