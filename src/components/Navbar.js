@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const {
@@ -16,7 +17,9 @@ const Navbar = () => {
 
   return (
     <Wrapper>
-      <h1>MatricsBox</h1>
+      <Link to='/'>
+        <h1>MatricsBox</h1>
+      </Link>
       <div>
         <section>
            { isUser && user.picture && (<img src={user.picture} alt={user.name}/>) }
