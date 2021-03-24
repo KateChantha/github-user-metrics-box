@@ -1,7 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { GithubContext } from '../../context/context';
 import UserItem from './UserItem';
+import './UserList.css'
 
 const UserList = () => {
+  const { isLoading, setIsLoading, getAllGithubUsers, allGithubUsrs } = React.useContext(GithubContext);
+
+  useEffect(() => {
+    
+    async function fetchData() { 
+      // setIsLoading(true)
+      const users = await getAllGithubUsers()
+      console.log(users)
+    }
+    fetchData();
+  }, []);
+
+
   const userArray = [
     {
       login: "mojombo",
@@ -38,8 +53,8 @@ const UserList = () => {
 
 
   return (
-    <div>
-      {userArray.map(user => (
+    <div className="user-list--container">
+      {allGithubUsrs.map(user => (
         <UserItem key={user.id} user={user}/>
       ))}
     </div>

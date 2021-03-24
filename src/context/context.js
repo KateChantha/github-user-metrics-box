@@ -11,6 +11,7 @@ const GithubContext = React.createContext();
 
 // create GithubProvider to customize the logic and return GithubContext.Provider
 const GithubProvider = ({ children }) => {
+  const [allGithubUsrs, setAllGithubUsers] = useState([])
   const [githubUser, setGithubUser] = useState(mockUser);
   const [repos, setRepos] = useState(mockRepos);
   const [followers, setFollowers] = useState(mockFollowers);
@@ -23,6 +24,16 @@ const GithubProvider = ({ children }) => {
   // set with default value
   const toggleError = (show = false, msg = '') => {
     setError({ show, msg })
+  }
+
+  // Get all users +++
+  const getAllGithubUsers = async () => {
+    // setIsLoading(true);
+    const res = await axios.get(`${rootUrl}/users`);
+    console.log(res)
+    // setIsLoading(false);
+    setAllGithubUsers(res.data);
+    return res.data
   }
 
   const searchGithubUser = async (user) => {
@@ -75,7 +86,7 @@ const GithubProvider = ({ children }) => {
   useEffect(checkRequests,[]);
 
   return (
-    <GithubContext.Provider value={{ githubUser, repos, followers, requestCount, error, searchGithubUser, isLoading }}>
+    <GithubContext.Provider value={{ githubUser, repos, followers, requestCount, error, searchGithubUser, setIsLoading, isLoading, getAllGithubUsers, allGithubUsrs }}>
       {children}
     </GithubContext.Provider>
   )

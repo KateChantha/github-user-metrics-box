@@ -13,10 +13,11 @@ const Dashboard = () => {
       { isLoading 
         ? <img src={loadingImage} className="loading-img" alt="laoding" />
         : <React.Fragment>
+            <UserList />
+           
             <Info />
             <User />
-            <Repos />
-            <UserList />
+            <Repos /> 
          </React.Fragment>
       }
     </main>

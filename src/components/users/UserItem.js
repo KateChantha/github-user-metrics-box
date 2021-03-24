@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import './UserItem.css';
 
 const UserItem = ({user}) => {
-
   const {login, avatar_url, html_url} = user;
+  
   return (  
     <div>
       <img src={avatar_url} 
