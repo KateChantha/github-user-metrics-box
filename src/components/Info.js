@@ -6,7 +6,7 @@ import { FiUsers, FiUserPlus } from 'react-icons/fi';
 
 const UserInfo = () => {
   const { githubUser }= React.useContext(GithubContext);
-  const { public_repos, followers, following, public_gists } = githubUser;
+  const { name, public_repos, followers, following, public_gists } = githubUser;
 
   const items = [
     {
@@ -41,6 +41,10 @@ const UserInfo = () => {
   
   return (
     <section className='section'>
+      <div className='section-title'>
+        <h3>Welcome to</h3>
+        <h2>{name}'s Metrics box</h2>
+      </div>
       <Wrapper className='section-center'>
         {items.map(item => (
           <Item key={item.id} {...item} />

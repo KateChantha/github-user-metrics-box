@@ -5,9 +5,9 @@ import { GithubContext } from '../context/context';
 
 
 const UserBoard = () => {
-  const { isLoading, someGithubUsers } = React.useContext(GithubContext);
+  const { isLoading } = React.useContext(GithubContext);
 
-  
+
   return (
     <main>
       <Navbar />
