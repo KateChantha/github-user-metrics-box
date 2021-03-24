@@ -4,17 +4,11 @@ import UserItem from './UserItem';
 import './UserList.css'
 
 const UserList = () => {
-  const { isLoading, setIsLoading, getAllGithubUsers, allGithubUsrs, someGithubUsers } = React.useContext(GithubContext);
+  const { isLoading, setIsLoading, getAllGithubUsers, someGithubUsers } = React.useContext(GithubContext);
+
 
   useEffect(() => {
-    
     getAllGithubUsers()
-    // async function fetchData() { 
-    //   // setIsLoading(true)
-    //   const users = await getAllGithubUsers()
-    //   console.log(users)
-    // }
-    // fetchData();
   }, []);
 
   return (

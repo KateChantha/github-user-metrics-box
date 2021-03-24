@@ -11,7 +11,7 @@ const GithubContext = React.createContext();
 
 // create GithubProvider to customize the logic and return GithubContext.Provider
 const GithubProvider = ({ children }) => {
-  const [allGithubUsrs, setAllGithubUsers] = useState([]);
+  // const [allGithubUsrs, setAllGithubUsers] = useState([]);
   const [someGithubUsers, setSomeGithubUsers] = useState([]);
   const [githubUser, setGithubUser] = useState(mockUser);
   const [repos, setRepos] = useState(mockRepos);
@@ -33,16 +33,22 @@ const GithubProvider = ({ children }) => {
     const res = await axios.get(`${rootUrl}/users`);
     console.log(res)
     setIsLoading(false);
-    setAllGithubUsers(res.data);
+    // setAllGithubUsers(res.data);
+    setSomeGithubUsers(res.data);
     return res.data
   }
 
   // Get some user from search box +++
   const searchSomeGithubUser = async (user) => {
+    toggleError();
     const res = await axios.get(`${rootUrl}/search/users?q=${user}`)
-
     // console.log(res.data.items)
-    setSomeGithubUsers(res.data.items);
+    if (res.data.items.length !== 0) {
+      setSomeGithubUsers(res.data.items);
+    } else {
+      toggleError(true, "there is no user with that user name!")
+    }
+    checkRequests();
   }
 
   const searchGithubUser = async (user) => {
@@ -79,9 +85,11 @@ const GithubProvider = ({ children }) => {
 
   // check remaining request 
   const checkRequests = () => {
+    
     axios(`${rootUrl}/rate_limit`)
       .then(({ data }) => {
         let { remaining } = data.rate;
+        console.log("check request reamining", data)
         setRequestCount(remaining);
 
         if (remaining === 0) {
@@ -95,7 +103,7 @@ const GithubProvider = ({ children }) => {
   useEffect(checkRequests,[]);
 
   return (
-    <GithubContext.Provider value={{ githubUser, repos, followers, requestCount, error, searchGithubUser, setIsLoading, isLoading, getAllGithubUsers, allGithubUsrs, searchSomeGithubUser, someGithubUsers }}>
+    <GithubContext.Provider value={{ githubUser, repos, followers, requestCount, error, searchGithubUser, setIsLoading, isLoading, getAllGithubUsers, searchSomeGithubUser, someGithubUsers }}>
       {children}
     </GithubContext.Provider>
   )
