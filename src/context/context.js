@@ -31,9 +31,16 @@ const GithubProvider = ({ children }) => {
     // setIsLoading(true);
     const res = await axios.get(`${rootUrl}/users`);
     console.log(res)
-    // setIsLoading(false);
+    setIsLoading(false);
     setAllGithubUsers(res.data);
     return res.data
+  }
+
+  // Get some user from search box
+  const searchSomeGithubUser = async (user) => {
+    const res = await axios.get(`${rootUrl}/search/users?q=${user}`)
+
+    console.log(res.data.items)
   }
 
   const searchGithubUser = async (user) => {
@@ -86,7 +93,7 @@ const GithubProvider = ({ children }) => {
   useEffect(checkRequests,[]);
 
   return (
-    <GithubContext.Provider value={{ githubUser, repos, followers, requestCount, error, searchGithubUser, setIsLoading, isLoading, getAllGithubUsers, allGithubUsrs }}>
+    <GithubContext.Provider value={{ githubUser, repos, followers, requestCount, error, searchGithubUser, setIsLoading, isLoading, getAllGithubUsers, allGithubUsrs, searchSomeGithubUser }}>
       {children}
     </GithubContext.Provider>
   )

@@ -8,12 +8,13 @@ const UserList = () => {
 
   useEffect(() => {
     
-    async function fetchData() { 
-      // setIsLoading(true)
-      const users = await getAllGithubUsers()
-      console.log(users)
-    }
-    fetchData();
+    getAllGithubUsers()
+    // async function fetchData() { 
+    //   // setIsLoading(true)
+    //   const users = await getAllGithubUsers()
+    //   console.log(users)
+    // }
+    // fetchData();
   }, []);
 
 
