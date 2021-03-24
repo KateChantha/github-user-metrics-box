@@ -1,16 +1,25 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import { MdSearch } from 'react-icons/md';
+import { MdSearch , MdClear } from 'react-icons/md';
 import { GithubContext } from '../context/context';
 const Search = () => {
-  const { requestCount, error, searchGithubUser, isLoading } = React.useContext(GithubContext);
+  const { requestCount, error, searchSomeGithubUser, isLoading } = React.useContext(GithubContext);
   const [user, setUser] = useState('');
   
   // get things from global context
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (user) {
+  //     searchGithubUser(user);
+  //     // optional setUser('') after submit
+  //   }
+  // }
+
+  // get some users ++++
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user) {
-      searchGithubUser(user);
+      searchSomeGithubUser(user);
       // optional setUser('') after submit
     }
   }
@@ -25,15 +34,21 @@ const Search = () => {
         )}
         <form onSubmit={handleSubmit}>
           <div className="form-control">
-            <MdSearch/>
-            <input 
-              type="text" 
-              placeholder="enter github user..."
-              value={user}
-              onChange={(e) => setUser(e.target.value)}
-            />
-            {(requestCount > 0 && !isLoading) && <button type="submit">search</button> }
-            
+            <div className="input-wrapper">
+                <MdSearch/>
+              <input 
+                type="text" 
+                placeholder="enter github user..."
+                value={user}
+                onChange={(e) => setUser(e.target.value)}
+              />
+            </div>
+            <div className="button-wrapper">
+              {/* <button className="clear-btn" onClick={() => setUser('')}>
+                <MdClear />
+              </button> */}
+              {(requestCount > 0 && !isLoading) && <button className="search-btn" type="submit">search</button> }
+            </div>
           </div>
         </form>
         <h3>requests : {requestCount} / 60</h3>
@@ -55,10 +70,9 @@ const Wrapper = styled.div`
   }
   .form-control {
     background: var(--clr-primary-9);
-    display: grid;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    grid-template-columns: auto 1fr auto;
-    column-gap: 0.5rem;
     border-radius: 5px;
     padding: 0.5rem;
     border: solid 3px var(--clr-red-light);
@@ -66,16 +80,16 @@ const Wrapper = styled.div`
       border-color: transparent;
       outline-color: var(--clr-grey-10);
       letter-spacing: var(--spacing);
-      /* color: var(--clr-grey-3); */
       background: var(--clr-primary-9);
       padding: 0.25rem 0.5rem;
+      width: 100%
     }
     input::placeholder {
       color: var(--clr-grey-3);
       text-transform: capitalize;
       letter-spacing: var(--spacing);
     }
-    button {
+    .search-btn {
       border-radius: 5px;
       border-color: transparent;
       padding: 0.25rem 0.5rem;
@@ -90,9 +104,23 @@ const Wrapper = styled.div`
         color: var(--clr-primary-1);
       }
     }
-
+    .clear-btn {
+      cursor: pointer;
+      border-color: transparent;
+      background: none;
+    }
+    .input-wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .button-wrapper {
+      display: flex;
+      align-items: center;
+    }
     svg {
       color: var(--clr-grey-5);
+      margin: 0 4px;
     }
     input,
     button,
